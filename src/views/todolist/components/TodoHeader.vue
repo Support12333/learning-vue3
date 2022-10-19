@@ -4,13 +4,23 @@
 
 <template>
     <div class="todo-header">
-        <input type="text" placeholder="请输入你的任务名称，按回车键确认" />
+        <input type="text" placeholder="请输入你的任务名称，按回车键确认" @keyup.enter="addtodo" />
     </div>
 </template>
 
 <script>
 export default {
-    name: 'TodoHeader'
+    name: 'TodoHeader',
+    props: ['additem'],
+    methods: {
+        addtodo(e) { 
+            console.log(e.target.value);
+            console.log(Math.ceil(Math.random() * 10));
+            const todo = {id:Math.ceil(Math.random() * 10),title:e.target.value,isEdit:false}
+            this.additem(todo)
+            e.target.value=''
+        }
+    }
 }
 </script>
 

@@ -7,11 +7,11 @@
         <li>
             <label>
                 <input type="checkbox" />
-                <span>{{list.title}}</span>
-                <input type="text">
+                <span>{{item.title}}</span>
+                <!-- <input type="text"> -->
             </label>
             <button class="btn btn-danger">删除</button>
-            <button class="btn btn-edit">编辑</button>
+            <!-- <button class="btn btn-edit">编辑</button> -->
         </li>
     </transition>
 </template>
@@ -19,7 +19,7 @@
 <script>
 export default {
     name: 'TodoItem',
-    props:['list']
+    props:['item']
 }
 </script>
 
@@ -69,19 +69,5 @@ li:hover button {
 
 .todo-enter-active {
     animation: todo 0.5s linear;
-}
-
-.todo-leave-active {
-    animation: todo 0.5s linear reverse;
-}
-
-@keyframes todo {
-    from {
-        transform: translateX(100%);
-    }
-
-    to {
-        transform: translateX(0px);
-    }
 }
 </style>

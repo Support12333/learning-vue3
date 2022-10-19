@@ -5,7 +5,7 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <TodoHeader />
+      <TodoHeader :additem='additem'/>
       <TodoList :list='list'/>
       <TodoFooter />
     </div>
@@ -30,6 +30,11 @@ export default {
     TodoHeader,
     TodoList,
     TodoFooter
+  },
+  methods: {
+    additem(todo) { 
+      this.list.unshift(todo)
+    }
   }
 }
 </script>

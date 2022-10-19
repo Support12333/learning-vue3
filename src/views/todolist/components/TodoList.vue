@@ -4,7 +4,7 @@
 
 <template>
     <ul class="todo-main">
-        <item :list='list' />
+        <item v-for="item in list" :key="item.id" :item='item' />
     </ul>
 </template>
 
