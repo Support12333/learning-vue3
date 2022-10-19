@@ -6,7 +6,7 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <TodoHeader />
-      <TodoList />
+      <TodoList :list='list'/>
       <TodoFooter />
     </div>
   </div>
@@ -18,6 +18,14 @@ import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
 export default {
   name: 'index',
+  data() {
+    return {
+      list: [
+        {id:'1',title:'睡觉',isEdit:true},
+        {id:'2',title:'1234',isEdit:true},
+      ]
+    }
+  },
   components: {
     TodoHeader,
     TodoList,

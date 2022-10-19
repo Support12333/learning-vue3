@@ -7,7 +7,7 @@
         <li>
             <label>
                 <input type="checkbox" />
-                <span></span>
+                <span>{{list.title}}</span>
                 <input type="text">
             </label>
             <button class="btn btn-danger">删除</button>
@@ -18,7 +18,8 @@
 
 <script>
 export default {
-    name: 'TodoItem'
+    name: 'TodoItem',
+    props:['list']
 }
 </script>
 

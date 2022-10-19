@@ -4,7 +4,7 @@
 
 <template>
     <ul class="todo-main">
-        <item></item>
+        <item :list='list' />
     </ul>
 </template>
 
@@ -14,7 +14,8 @@ export default {
     name: 'TodoList',
     components: {
         item
-    }
+    },
+    props:['list']
 }
 </script>
 
