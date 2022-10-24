@@ -5,8 +5,8 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <TodoHeader :additem='additem'/>
-      <TodoList :list='list'/>
+      <TodoHeader :addtodo='addtodo' />
+      <TodoList :list='list' :deletetodo='deletetodo' />
       <TodoFooter />
     </div>
   </div>
@@ -21,8 +21,8 @@ export default {
   data() {
     return {
       list: [
-        {id:'1',title:'睡觉',isEdit:true},
-        {id:'2',title:'1234',isEdit:true},
+        { id: '1', title: '睡觉', isEdit: true },
+        { id: '2', title: '1234', isEdit: true },
       ]
     }
   },
@@ -32,8 +32,11 @@ export default {
     TodoFooter
   },
   methods: {
-    additem(todo) { 
+    addtodo(todo) {
       this.list.unshift(todo)
+    },
+    deletetodo(id) {
+      this.list = this.list.filter(item => { return item.id !== id })
     }
   }
 }

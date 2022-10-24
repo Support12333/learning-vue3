@@ -6,11 +6,11 @@
     <transition name="todo" appear>
         <li>
             <label>
-                <input type="checkbox" />
-                <span>{{item.title}}</span>
+                <input type="checkbox" :checked='todo.isEdit'/>
+                <span>{{todo.title}}</span>
                 <!-- <input type="text"> -->
             </label>
-            <button class="btn btn-danger">删除</button>
+            <button class="btn btn-danger" @click="deleteitem(todo.id)">删除</button>
             <!-- <button class="btn btn-edit">编辑</button> -->
         </li>
     </transition>
@@ -19,7 +19,15 @@
 <script>
 export default {
     name: 'TodoItem',
-    props:['item']
+    props: {
+        todo: Object,
+        deletetodo:Function
+    },
+    methods: {
+        deleteitem(id) {
+            this.deletetodo(id)
+        }
+    }
 }
 </script>
 

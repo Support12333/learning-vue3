@@ -4,7 +4,7 @@
 
 <template>
     <ul class="todo-main">
-        <item v-for="item in list" :key="item.id" :item='item' />
+        <item v-for="item in list" :key="item.id" :todo='item' :deletetodo='deletetodo'/>
     </ul>
 </template>
 
@@ -15,7 +15,10 @@ export default {
     components: {
         item
     },
-    props:['list']
+    props: {
+        list: Array,
+        deletetodo:Function
+    }
 }
 </script>
 

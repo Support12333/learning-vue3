@@ -4,21 +4,32 @@
 
 <template>
     <div class="todo-header">
-        <input type="text" placeholder="请输入你的任务名称，按回车键确认" @keyup.enter="addtodo" />
+        <input type="text" placeholder="请输入你的任务名称，按回车键确认" v-model="title" @keyup.enter="add" />
     </div>
 </template>
 
 <script>
 export default {
     name: 'TodoHeader',
-    props: ['additem'],
+    data() {
+        return {
+            title: ''
+        }
+    },
+    props: {
+        addtodo:Function
+    },
     methods: {
-        addtodo(e) { 
-            console.log(e.target.value);
-            console.log(Math.ceil(Math.random() * 10));
-            const todo = {id:Math.ceil(Math.random() * 10),title:e.target.value,isEdit:false}
-            this.additem(todo)
-            e.target.value=''
+        add(e) {
+            const id = new Date().getTime()
+            if (!this.title) return alert("不能为空")            
+            const todo = {
+                id: id,
+                title: this.title,
+                isEdit: false
+            }
+            this.addtodo(todo)
+            this.title = ''
         }
     }
 }

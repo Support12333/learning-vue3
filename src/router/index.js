@@ -7,12 +7,12 @@ const routes = [
     component: () => import('@views/base/login')
   },
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: () => import('@views/home')
   },
   {
-    path: '/todolist',
+    path: '/',
     name: 'todolist',
     component: () => import('@views/todolist')
   }
