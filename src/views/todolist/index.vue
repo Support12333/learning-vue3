@@ -7,7 +7,7 @@
     <div class="todo-wrap">
       <TodoHeader :addtodo='addtodo' />
       <TodoList :list='list' :deletetodo='deletetodo' />
-      <TodoFooter />
+      <TodoFooter :checkboxAll='checkboxAll' />
     </div>
   </div>
 </template>
@@ -37,6 +37,17 @@ export default {
     },
     deletetodo(id) {
       this.list = this.list.filter(item => { return item.id !== id })
+    },
+    computed: {
+      checkboxAll: {
+        get: function () {
+          return this.list.every(item => item.idEdit === true)
+        },
+        set: function (newVal) {
+          console.log(newVal,'new');
+          this.list.forEach(item => item.idEdit == newVal)
+        }
+      }
     }
   }
 }

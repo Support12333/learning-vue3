@@ -5,11 +5,10 @@
 <template>
     <div class="todo-footer">
         <label>
-            <input type="checkbox" />
+            <input type="checkbox" :checkbox='checkboxAll'/>
         </label>
         <span>
-            <!-- <span>已完成{{doneTodo}}</span> / 全部{{total}} -->
-            <span>已完成</span> / 全部
+            <span>已完成{{doneTodo}}</span> / 全部{{total}}
         </span>
         <button class="btn btn-danger">清除已完成任务</button>
     </div>
@@ -17,7 +16,10 @@
 
 <script>
 export default {
-    name: 'TodoFooter'
+    name: 'TodoFooter',
+    props: {
+        checkboxAll:Boolean
+    }
 }
 </script>
 
