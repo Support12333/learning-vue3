@@ -6,8 +6,8 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <TodoHeader :addtodo='addtodo' />
-      <TodoList :list='list' :deletetodo='deletetodo' />
-      <TodoFooter :checkboxAll='checkboxAll' />
+      <TodoList :list='list' :checkeddone="checkeddone" :deletetodo='deletetodo' />
+      <TodoFooter :list='list' :checkAll='checkAll' :clearAll='clearAll'/>
     </div>
   </div>
 </template>
@@ -21,8 +21,8 @@ export default {
   data() {
     return {
       list: [
-        { id: '1', title: '睡觉', isEdit: true },
-        { id: '2', title: '1234', isEdit: true },
+        { id: '1', title: '睡觉', done: true },
+        { id: '2', title: '1234', done: true },
       ]
     }
   },
@@ -32,22 +32,27 @@ export default {
     TodoFooter
   },
   methods: {
+    //添加
     addtodo(todo) {
       this.list.unshift(todo)
     },
+    //勾选
+    checkeddone(id) {
+      this.list.filter(item => { return item.id === id ? item.done = !item.done : '' })
+    },
+    //删除
     deletetodo(id) {
       this.list = this.list.filter(item => { return item.id !== id })
     },
-    computed: {
-      checkboxAll: {
-        get: function () {
-          return this.list.every(item => item.idEdit === true)
-        },
-        set: function (newVal) {
-          console.log(newVal,'new');
-          this.list.forEach(item => item.idEdit == newVal)
-        }
-      }
+    //全选or取消
+    checkAll(value) {
+      this.list.forEach(item => {
+        item.done = value
+      })
+    },
+    //清除已完成
+    clearAll() {
+      this.list = this.list.filter(item => !item.done)
     }
   }
 }

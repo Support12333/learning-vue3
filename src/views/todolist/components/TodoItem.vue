@@ -6,8 +6,8 @@
     <transition name="todo" appear>
         <li>
             <label>
-                <input type="checkbox" :checked='todo.isEdit'/>
-                <span>{{todo.title}}</span>
+                <input type="checkbox" :checked='todo.done' @click="checked(todo.id)" />
+                <span>{{ todo.title }}</span>
                 <!-- <input type="text"> -->
             </label>
             <button class="btn btn-danger" @click="deleteitem(todo.id)">删除</button>
@@ -21,9 +21,13 @@ export default {
     name: 'TodoItem',
     props: {
         todo: Object,
-        deletetodo:Function
+        checkeddone: Function,
+        deletetodo: Function
     },
     methods: {
+        checked(id) {
+            this.checkeddone(id)
+        },
         deleteitem(id) {
             this.deletetodo(id)
         }
