@@ -8,7 +8,6 @@
             <label>
                 <input type="checkbox" :checked='todo.done' @click="checked(todo.id)" />
                 <span>{{ todo.title }}</span>
-                <!-- <input type="text"> -->
             </label>
             <button class="btn btn-danger" @click="deleteitem(todo.id)">删除</button>
             <!-- <button class="btn btn-edit">编辑</button> -->

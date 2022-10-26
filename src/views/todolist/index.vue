@@ -54,6 +54,11 @@ export default {
     clearAll() {
       this.list = this.list.filter(item => !item.done)
     }
+  },
+  watch: {
+    list(value) { 
+      localStorage.setItem('todos',JSON.stringify(value))
+    }
   }
 }
 </script>
