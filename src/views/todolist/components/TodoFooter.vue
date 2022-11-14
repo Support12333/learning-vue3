@@ -14,9 +14,7 @@
 export default {
     name: 'TodoFooter',
     props: {
-        list: Array,
-        checkAll: Function,
-        clearAll: Function
+        list: Array
     },
     computed: {
         //总数
@@ -33,14 +31,14 @@ export default {
                 return this.doneTotal === this.total && this.total > 0
             },
             set(value) {
-                this.checkAll(value)
+                this.$emit('checkAll',value)
             }
         }
     },
     methods: {
         //清除已完成
         clearAllTodo() {
-            this.clearAll()
+            this.$emit('clearAll')
         }
     }
 }

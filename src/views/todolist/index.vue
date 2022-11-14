@@ -5,9 +5,9 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <TodoHeader :addtodo='addtodo' />
+      <TodoHeader @addtodo='addtodo' />
       <TodoList :list='list' :checkeddone="checkeddone" :deletetodo='deletetodo' />
-      <TodoFooter :list='list' :checkAll='checkAll' :clearAll='clearAll'/>
+      <TodoFooter :list='list' @checkAll='checkAll' @clearAll='clearAll'/>
     </div>
   </div>
 </template>
@@ -20,10 +20,7 @@ export default {
   name: 'index',
   data() {
     return {
-      list: [
-        { id: '1', title: '睡觉', done: true },
-        { id: '2', title: '1234', done: true },
-      ]
+      list: []
     }
   },
   components: {

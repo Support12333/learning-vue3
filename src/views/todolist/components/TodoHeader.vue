@@ -16,9 +16,6 @@ export default {
             title: ''
         }
     },
-    props: {
-        addtodo:Function
-    },
     methods: {
         add(e) {
             const id = new Date().getTime()
@@ -28,7 +25,7 @@ export default {
                 title: this.title,
                 isEdit: false
             }
-            this.addtodo(todo)
+            this.$emit('addtodo',todo)
             this.title = ''
         }
     }
