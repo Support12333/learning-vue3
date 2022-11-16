@@ -4,5 +4,6 @@ import router from './router'
 import 'element-plus/es/components/message/style/css'
 // import '@styles/index.scss'
 
-createApp(App).use(router).mount('#app')
-   
+const app = createApp(App)
+app.use(router)
+app.mount('#app')

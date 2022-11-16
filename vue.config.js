@@ -17,6 +17,7 @@ module.exports = defineConfig({
       .set('@components', resolve('src/components'))
       .set('@views', resolve('src/views'))
       .set('@styles', resolve('src/styles'))
+      .set('@Bus', resolve('src/Bus'))
 
     if (process.env.NODE_ENV === "production") {
       // 去除打印和注释输出

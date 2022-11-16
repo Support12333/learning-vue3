@@ -6,8 +6,8 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <TodoHeader @addtodo='addtodo' />
-      <TodoList :list='list' :checkeddone="checkeddone" :deletetodo='deletetodo' />
-      <TodoFooter :list='list' @checkAll='checkAll' @clearAll='clearAll'/>
+      <TodoList :list='list' />
+      <TodoFooter :list='list' @checkAll='checkAll' @clearAll='clearAll' />
     </div>
   </div>
 </template>
@@ -16,11 +16,12 @@
 import TodoHeader from './components/TodoHeader.vue'
 import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
+import $bus from '@Bus/eventBus';
 export default {
   name: 'index',
   data() {
     return {
-      list: []
+      list: JSON.parse(localStorage.getItem('todos')) || []
     }
   },
   components: {
@@ -36,6 +37,10 @@ export default {
     //勾选
     checkeddone(id) {
       this.list.filter(item => { return item.id === id ? item.done = !item.done : '' })
+    },
+    //修改
+    updatatodo(param) {
+      this.list.filter(item => { return item.id === param.id ? item.title = param.value : '' })
     },
     //删除
     deletetodo(id) {
@@ -53,10 +58,21 @@ export default {
     }
   },
   watch: {
-    list(value) { 
-      localStorage.setItem('todos',JSON.stringify(value))
+    list: {
+      deep: true,
+      handler: function (value) {
+        localStorage.setItem('todos', JSON.stringify(value))
+      }
     }
-  }
+  },
+  mounted() {
+    $bus.on('checkeddone', this.checkeddone)
+    $bus.on('deletetodo', this.deletetodo)
+    $bus.on('updatatodo',this.updatatodo)
+  },
+  beforeDestroy() {
+    $bus.off(['checkeddone', 'deletetodo'])
+  },
 }
 </script>
 

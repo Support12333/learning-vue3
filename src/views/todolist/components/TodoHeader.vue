@@ -19,13 +19,13 @@ export default {
     methods: {
         add(e) {
             const id = new Date().getTime()
-            if (!this.title) return alert("不能为空")            
+            if (!this.title) return alert("不能为空")
             const todo = {
                 id: id,
                 title: this.title,
                 isEdit: false
             }
-            this.$emit('addtodo',todo)
+            this.$emit('addtodo', todo)
             this.title = ''
         }
     }
