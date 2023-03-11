@@ -12,9 +12,14 @@ const routes = [
     component: () => import('@views/home')
   },
   {
-    path: '/',
+    path: '/todolist',
     name: 'todolist',
     component: () => import('@views/todolist')
+  },
+  {
+    path: '/',
+    name: 'upload',
+    component: () => import('@views/dome/upload')
   }
 ]
 
