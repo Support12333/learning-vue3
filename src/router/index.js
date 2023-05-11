@@ -18,8 +18,8 @@ const routes = [
   },
   {
     path: '/',
-    name: 'upload',
-    component: () => import('@views/dome/upload')
+    name: 'cascader',
+    component: () => import('@views/dome/cascader')
   }
 ]
 
